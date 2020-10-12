@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/IG" xmlns:tns="http://www.example.org/IG" elementFormDefault="qualified">
 
-	<annotation>
-		<appinfo>Institutional Grammar 2.0 XML Schema</appinfo>
-		<documentation>This file contains the XML Schema of the Institutional Grammar 2.0. 
-		It captures all forms of institutional statements, including constitutive and regulative statements, 
-		as well essential nesting capabilities, including statement-level nesting and component-level nesting, 
-		both including institutional statements as well as embedded statements of fact.
-		URL: https://github.com/InstitutionalGrammar/IG-XML-Schema
-		Contact: Christopher Frantz (cf@christopherfrantz.org)</documentation>
-	</annotation>
-
+    <annotation>
+        <appinfo>Institutional Grammar 2.0 XML Schema</appinfo>
+        <documentation>This file contains the XML Schema of the Institutional Grammar 2.0. 
+        It captures all forms of institutional statements, including constitutive and regulative statements, 
+        as well essential nesting capabilities, including statement-level nesting and component-level nesting, 
+        both including institutional statements as well as embedded statements of fact.
+        URL: https://github.com/InstitutionalGrammar/IG-XML-Schema
+        Contact: Christopher Frantz (cf@christopherfrantz.org)</documentation>
+    </annotation>
+    
     <element name="Attributes" type="tns:Attributes"></element>
     
     <complexType name="Attributes">
-    	<choice>
-    		<element name="Attributes" type="string"></element>
-    		<element name="NestedInstitutionalStatement" type="tns:InstitutionalExpression"></element>
-    	</choice>
+        <choice>
+            <element name="Attributes" type="string"></element>
+            <element name="NestedInstitutionalStatement" type="tns:InstitutionalExpression"></element>
+        </choice>
     </complexType>
 
     <element name="Deontic" type="string"></element>
@@ -27,35 +27,35 @@
     <element name="Object" type="tns:Object"></element>
     
     <complexType name="Object">
-    	<sequence>
-    		<element name="DirectObject" type="tns:NestedObject" maxOccurs="1" minOccurs="0"></element>
-    		<element name="IndirectObject" type="tns:NestedObject" maxOccurs="1" minOccurs="0"></element>
-    	</sequence>
+        <sequence>
+            <element name="DirectObject" type="tns:NestedObject" maxOccurs="1" minOccurs="0"></element>
+            <element name="IndirectObject" type="tns:NestedObject" maxOccurs="1" minOccurs="0"></element>
+        </sequence>
     </complexType>
     
     <complexType name="NestedObject">
-    	<choice>
-    		<element name="Object" type="string"></element>
-    		<element name="NestedInstitutionalStatement" type="tns:InstitutionalExpression"></element>
-    	</choice>
+        <choice>
+            <element name="Object" type="string"></element>
+            <element name="NestedInstitutionalStatement" type="tns:InstitutionalExpression"></element>
+        </choice>
     </complexType>
     
     <element name="ConstitutedEntity" type="tns:ConstitutedEntity"></element>
     
     <complexType name="ConstitutedEntity">
-    	<choice>
-    		<element name="ConstitutedEntity" type="string"></element>
-    		<element name="NestedInstitutionalStatement" type="tns:InstitutionalExpression"></element>
-    	</choice>
+        <choice>
+            <element name="ConstitutedEntity" type="string"></element>
+            <element name="NestedInstitutionalStatement" type="tns:InstitutionalExpression"></element>
+        </choice>
     </complexType>
     
     <element name="ConstitutingProperties" type="tns:Properties"></element>
     
     <complexType name="Properties">
-    	<choice>
-    		<element name="Properties" type="string"></element>
-    		<element name="NestedInstitutionalStatement" type="tns:InstitutionalExpression"></element>
-    	</choice>
+        <choice>
+            <element name="Properties" type="string"></element>
+            <element name="NestedInstitutionalStatement" type="tns:InstitutionalExpression"></element>
+        </choice>
     </complexType>
     
     <element name="ConstitutiveFunction" type="string"></element>
@@ -63,19 +63,19 @@
     <element name="ActivationCondition" type="tns:ActivationCondition"></element>
     
     <complexType name="ActivationCondition">
-    	<choice>
-    		<element name="ActivationCondition" type="string"></element>
-    		<element name="NestedInstitutionalStatement" type="tns:InstitutionalExpression"></element>
-    	</choice>
+        <choice>
+            <element name="ActivationCondition" type="string"></element>
+            <element name="NestedInstitutionalStatement" type="tns:InstitutionalExpression"></element>
+        </choice>
     </complexType>
 
     <element name="ExecutionConstraint" type="tns:ExecutionConstraint"></element>
     
     <complexType name="ExecutionConstraint">
-    	<choice>
-    		<element name="ExecutionConstraint" type="string"></element>
-    		<element name="NestedInstitutionalStatement" type="tns:InstitutionalExpression"></element>
-    	</choice>
+        <choice>
+            <element name="ExecutionConstraint" type="string"></element>
+            <element name="NestedInstitutionalStatement" type="tns:InstitutionalExpression"></element>
+        </choice>
     </complexType>
     
     <element name="OrElse" type="tns:InstitutionalStatement"></element>
@@ -87,95 +87,95 @@
     <element name="XOR" type="string"></element>
     
     <complexType name="InstitutionalStatementCombination">
-		<sequence>
-			<element name="LeftInstitutionalStatement" type="tns:InstitutionalStatement"></element>
-			<element name="LogicalOperator" type="tns:LogicalOperator"></element>
-			<element name="RightInstitutionalStatement" type="tns:InstitutionalStatement"></element>
-		</sequence>
-	</complexType>
+        <sequence>
+            <element name="LeftInstitutionalStatement" type="tns:InstitutionalStatement"></element>
+            <element name="LogicalOperator" type="tns:LogicalOperator"></element>
+            <element name="RightInstitutionalStatement" type="tns:InstitutionalStatement"></element>
+        </sequence>
+    </complexType>
     
     <complexType name="InstitutionalStatement">
-    	<sequence>
-    		<element name="Inversion" type="boolean"></element>
-	    	<choice>
-	    		<element name="InstitutionalStatementCombination" type="tns:InstitutionalStatementCombination"></element>
-	    		<element name="RegulativeStatement" type="tns:RegulativeInstitutionalStatement"></element>
-	    		<element name="ConstitutiveStatement" type="tns:ConstitutiveInstitutionalStatement"></element>
-	    	</choice>
-    	</sequence>
+        <sequence>
+            <element name="Inversion" type="boolean"></element>
+            <choice>
+                <element name="InstitutionalStatementCombination" type="tns:InstitutionalStatementCombination"></element>
+                <element name="RegulativeStatement" type="tns:RegulativeInstitutionalStatement"></element>
+                <element name="ConstitutiveStatement" type="tns:ConstitutiveInstitutionalStatement"></element>
+            </choice>
+        </sequence>
     </complexType>
     
     <complexType name="StatementOfFact">
-    	<sequence>
-    		<element name="Inversion" type="boolean"></element>
-    		<choice>
-    			<element name="Combination" type="tns:InstitutionalStatementCombination"></element>
-    			<element name="RegulativeStatementOfFact" type="tns:RegulativeStatementOfFact"></element>
-    			<element name="ConstitutiveStatementOfFact" type="tns:ConstitutiveStatementOfFact"></element>
-    		</choice>
-    	</sequence>
+        <sequence>
+            <element name="Inversion" type="boolean"></element>
+            <choice>
+                <element name="Combination" type="tns:InstitutionalStatementCombination"></element>
+                <element name="RegulativeStatementOfFact" type="tns:RegulativeStatementOfFact"></element>
+                <element name="ConstitutiveStatementOfFact" type="tns:ConstitutiveStatementOfFact"></element>
+            </choice>
+        </sequence>
     </complexType>
     
     <complexType name="InstitutionalExpression">
-    	<choice>
-    		<element name="InstitutionalStatement" type="tns:InstitutionalStatement"></element>
-    		<element name="StatementOfFact" type="tns:StatementOfFact"></element>
-    	</choice>
+        <choice>
+            <element name="InstitutionalStatement" type="tns:InstitutionalStatement"></element>
+            <element name="StatementOfFact" type="tns:StatementOfFact"></element>
+        </choice>
     </complexType>
     
     <complexType name="LogicalOperator">
-    	<choice>
-    		<element ref="tns:AND"></element>
-    		<element ref="tns:OR"></element>
-    		<element ref="tns:XOR"></element>
-    	</choice>
+        <choice>
+            <element ref="tns:AND"></element>
+            <element ref="tns:OR"></element>
+            <element ref="tns:XOR"></element>
+        </choice>
     </complexType>
 
     <complexType name="RegulativeInstitutionalStatement">
-    	<sequence>
-    		<element ref="tns:Attributes"></element>
-    		<element ref="tns:Object" maxOccurs="1" minOccurs="0"></element>
-    		<element ref="tns:Deontic" maxOccurs="1" minOccurs="0"></element>
-    		<element ref="tns:Aim"></element>
-    		<element ref="tns:ActivationCondition" maxOccurs="unbounded" minOccurs="0"></element>
-    		<element ref="tns:ExecutionConstraint" maxOccurs="unbounded" minOccurs="0"></element>
-    		<element ref="tns:OrElse" maxOccurs="1" minOccurs="0"></element>
-    	</sequence>
+        <sequence>
+            <element ref="tns:Attributes"></element>
+            <element ref="tns:Object" maxOccurs="1" minOccurs="0"></element>
+            <element ref="tns:Deontic" maxOccurs="1" minOccurs="0"></element>
+            <element ref="tns:Aim"></element>
+            <element ref="tns:ActivationCondition" maxOccurs="unbounded" minOccurs="0"></element>
+            <element ref="tns:ExecutionConstraint" maxOccurs="unbounded" minOccurs="0"></element>
+            <element ref="tns:OrElse" maxOccurs="1" minOccurs="0"></element>
+        </sequence>
     </complexType>
     
     <complexType name="RegulativeStatementOfFact">
-    	<sequence>
-    		<element ref="tns:Attributes"></element>
-    		<element ref="tns:Object" maxOccurs="1" minOccurs="0"></element>
-    		<element ref="tns:Deontic" maxOccurs="1" minOccurs="0"></element>
-    		<element ref="tns:Aim"></element>
-    		<element ref="tns:ActivationCondition" maxOccurs="unbounded" minOccurs="0"></element>
-    		<element ref="tns:ExecutionConstraint" maxOccurs="unbounded" minOccurs="0"></element>
-    		<element ref="tns:OrElse" maxOccurs="1" minOccurs="0"></element>
-    	</sequence>
+        <sequence>
+            <element ref="tns:Attributes"></element>
+            <element ref="tns:Object" maxOccurs="1" minOccurs="0"></element>
+            <element ref="tns:Deontic" maxOccurs="1" minOccurs="0"></element>
+            <element ref="tns:Aim"></element>
+            <element ref="tns:ActivationCondition" maxOccurs="unbounded" minOccurs="0"></element>
+            <element ref="tns:ExecutionConstraint" maxOccurs="unbounded" minOccurs="0"></element>
+            <element ref="tns:OrElse" maxOccurs="1" minOccurs="0"></element>
+        </sequence>
     </complexType>
     
     <complexType name="ConstitutiveInstitutionalStatement">
-    	<sequence>
-    		<element ref="tns:ConstitutedEntity"></element>
-    		<element ref="tns:Deontic" maxOccurs="1" minOccurs="0"></element>
-    		<element ref="tns:ConstitutiveFunction"></element>
-    		<element ref="tns:ConstitutingProperties" maxOccurs="unbounded" minOccurs="0"></element>
-    		<element ref="tns:ActivationCondition" maxOccurs="unbounded" minOccurs="0"></element>
-    		<element ref="tns:ExecutionConstraint" maxOccurs="unbounded" minOccurs="0"></element>
-    		<element ref="tns:OrElse" maxOccurs="1" minOccurs="0"></element>
-    	</sequence>
+        <sequence>
+            <element ref="tns:ConstitutedEntity"></element>
+            <element ref="tns:Deontic" maxOccurs="1" minOccurs="0"></element>
+            <element ref="tns:ConstitutiveFunction"></element>
+            <element ref="tns:ConstitutingProperties" maxOccurs="unbounded" minOccurs="0"></element>
+            <element ref="tns:ActivationCondition" maxOccurs="unbounded" minOccurs="0"></element>
+            <element ref="tns:ExecutionConstraint" maxOccurs="unbounded" minOccurs="0"></element>
+            <element ref="tns:OrElse" maxOccurs="1" minOccurs="0"></element>
+        </sequence>
     </complexType>
     
     <complexType name="ConstitutiveStatementOfFact">
-    	<sequence>
-    		<element ref="tns:ConstitutedEntity"></element>
-    		<element ref="tns:Deontic" maxOccurs="1" minOccurs="0"></element>
-    		<element ref="tns:ConstitutiveFunction"></element>
-    		<element ref="tns:ConstitutingProperties" maxOccurs="unbounded" minOccurs="0"></element>
-    		<element ref="tns:ActivationCondition" maxOccurs="unbounded" minOccurs="0"></element>
-    		<element ref="tns:ExecutionConstraint" maxOccurs="unbounded" minOccurs="0"></element>
-    		<element ref="tns:OrElse" maxOccurs="1" minOccurs="0"></element>
-    	</sequence>
+        <sequence>
+            <element ref="tns:ConstitutedEntity"></element>
+            <element ref="tns:Deontic" maxOccurs="1" minOccurs="0"></element>
+            <element ref="tns:ConstitutiveFunction"></element>
+            <element ref="tns:ConstitutingProperties" maxOccurs="unbounded" minOccurs="0"></element>
+            <element ref="tns:ActivationCondition" maxOccurs="unbounded" minOccurs="0"></element>
+            <element ref="tns:ExecutionConstraint" maxOccurs="unbounded" minOccurs="0"></element>
+            <element ref="tns:OrElse" maxOccurs="1" minOccurs="0"></element>
+        </sequence>
     </complexType>
 </schema>
