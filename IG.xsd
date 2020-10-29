@@ -30,12 +30,12 @@
         <choice>
             <sequence>
                 <!-- Simple attribute characterization -->
-                <element name="Attributes" type="string"></element>
+                <element name="Attributes" type="string" maxOccurs="unbounded" minOccurs="1"></element>
                 <!-- One or more properties, potentially with nested properties -->
                 <element ref="tns:PropertyProperty" maxOccurs="unbounded" minOccurs="0"></element>
             </sequence>
             <!-- Nested institutional statement or statement of fact -->
-            <element name="NestedInstitutionalStatement" type="tns:InstitutionalExpression"></element>
+            <element name="NestedInstitutionalExpression" type="tns:InstitutionalExpression"></element>
         </choice>
     </complexType>
     
@@ -65,7 +65,7 @@
                 <element ref="tns:PropertyProperty" maxOccurs="unbounded" minOccurs="0"></element>
             </sequence>
             <!-- Nested institutional statement or statement of fact -->
-            <element name="NestedInstitutionalStatement" type="tns:InstitutionalExpression"></element>
+            <element name="NestedInstitutionalExpression" type="tns:InstitutionalExpression"></element>
         </choice>
     </complexType>
     
@@ -76,12 +76,12 @@
         <choice>
             <sequence>
                 <!-- Simple entity characterization -->
-                <element name="ConstitutedEntity" type="string"></element>
+                <element name="ConstitutedEntity" type="string" maxOccurs="unbounded" minOccurs="1"></element>
                 <!-- One or more properties, potentially with nested properties -->
                 <element ref="tns:PropertyProperty" maxOccurs="unbounded" minOccurs="0"></element>
             </sequence>
             <!-- Nested institutional statement or statement of fact -->
-            <element name="NestedInstitutionalStatement" type="tns:InstitutionalExpression"></element>
+            <element name="NestedInstitutionalExpression" type="tns:InstitutionalExpression"></element>
         </choice>
     </complexType>
     
@@ -90,13 +90,19 @@
     <!-- Properties can have properties themselves (property hierarchies) -->
     <element name="PropertyProperty" type="tns:PropertyProperty"></element>
     
-    <!-- Properties of a property is expressed as the property characterization as well as the nested property,
-         which itself can embed a hierarchical property structure -->
+    <!-- Properties of a property is expressed as simple property characterization, optional higher-order properties 
+         forming a hierarchical property structure -->
     <complexType name="PropertyProperty">
-        <sequence>
-            <element name="Property" type="tns:Properties"></element>
-            <element name="NestedProperty" type="tns:Properties"></element>
-        </sequence>
+       <choice>
+            <sequence>
+                <!-- Simple property characterization -->
+                <element name="Property" type="tns:Properties" maxOccurs="unbounded" minOccurs="1"></element>
+                <!-- Potential nested properties -->
+                <element name="NestedProperty" type="tns:Properties" maxOccurs="unbounded" minOccurs="0"></element>
+            </sequence>
+            <!-- Nested institutional statement or statement of fact -->
+            <element name="NestedInstitutionalExpression" type="tns:InstitutionalExpression"></element>
+        </choice>
     </complexType>
     
     <!-- Generic property specification, either as simple string characterization, hierarchical property structure, or institutional expression(s) -->
@@ -107,7 +113,7 @@
             <!-- One or more properties, potentially with nested properties -->
             <element ref="tns:PropertyProperty" maxOccurs="unbounded" minOccurs="1"></element>
             <!-- Nested institutional statement or statement of fact -->
-            <element name="NestedInstitutionalStatement" type="tns:InstitutionalExpression"></element>
+            <element name="NestedInstitutionalExpression" type="tns:InstitutionalExpression"></element>
         </choice>
     </complexType>
     
@@ -118,8 +124,8 @@
     <!-- Activation conditions can be of primitive type or embed institutional statements or statements of fact -->
     <complexType name="ActivationCondition">
         <choice>
-            <element name="ActivationCondition" type="string"></element>
-            <element name="NestedInstitutionalStatement" type="tns:InstitutionalExpression"></element>
+            <element name="ActivationCondition" type="string" maxOccurs="unbounded" minOccurs="0"></element>
+            <element name="NestedInstitutionalExpression" type="tns:InstitutionalExpression"></element>
         </choice>
     </complexType>
 
@@ -128,8 +134,8 @@
     <!-- Execution constraints can be of primitive type or embed institutional statements or statements of fact -->
     <complexType name="ExecutionConstraint">
         <choice>
-            <element name="ExecutionConstraint" type="string"></element>
-            <element name="NestedInstitutionalStatement" type="tns:InstitutionalExpression"></element>
+            <element name="ExecutionConstraint" type="string" maxOccurs="unbounded" minOccurs="0"></element>
+            <element name="NestedInstitutionalExpression" type="tns:InstitutionalExpression"></element>
         </choice>
     </complexType>
     
@@ -162,8 +168,8 @@
             <element ref="tns:Object" maxOccurs="1" minOccurs="0"></element>
             <element ref="tns:Deontic" maxOccurs="1" minOccurs="0"></element>
             <element ref="tns:Aim"></element>
-            <element ref="tns:ActivationCondition" maxOccurs="unbounded" minOccurs="0"></element>
-            <element ref="tns:ExecutionConstraint" maxOccurs="unbounded" minOccurs="0"></element>
+            <element ref="tns:ActivationCondition" maxOccurs="1" minOccurs="0"></element>
+            <element ref="tns:ExecutionConstraint" maxOccurs="1" minOccurs="0"></element>
             <element ref="tns:OrElse" maxOccurs="1" minOccurs="0"></element>
         </sequence>
     </complexType>
@@ -174,8 +180,8 @@
             <element ref="tns:Attributes"></element>
             <element ref="tns:Object" maxOccurs="1" minOccurs="0"></element>
             <element ref="tns:Aim"></element>
-            <element ref="tns:ActivationCondition" maxOccurs="unbounded" minOccurs="0"></element>
-            <element ref="tns:ExecutionConstraint" maxOccurs="unbounded" minOccurs="0"></element>
+            <element ref="tns:ActivationCondition" maxOccurs="1" minOccurs="0"></element>
+            <element ref="tns:ExecutionConstraint" maxOccurs="1" minOccurs="0"></element>
         </sequence>
     </complexType>
     
@@ -185,9 +191,9 @@
             <element ref="tns:ConstitutedEntity"></element>
             <element ref="tns:Deontic" maxOccurs="1" minOccurs="0"></element>
             <element ref="tns:ConstitutiveFunction"></element>
-            <element ref="tns:ConstitutingProperties" maxOccurs="unbounded" minOccurs="0"></element>
-            <element ref="tns:ActivationCondition" maxOccurs="unbounded" minOccurs="0"></element>
-            <element ref="tns:ExecutionConstraint" maxOccurs="unbounded" minOccurs="0"></element>
+            <element ref="tns:ConstitutingProperties" maxOccurs="1" minOccurs="0"></element>
+            <element ref="tns:ActivationCondition" maxOccurs="1" minOccurs="0"></element>
+            <element ref="tns:ExecutionConstraint" maxOccurs="1" minOccurs="0"></element>
             <element ref="tns:OrElse" maxOccurs="1" minOccurs="0"></element>
         </sequence>
     </complexType>
@@ -197,9 +203,9 @@
         <sequence>
             <element ref="tns:ConstitutedEntity"></element>
             <element ref="tns:ConstitutiveFunction"></element>
-            <element ref="tns:ConstitutingProperties" maxOccurs="unbounded" minOccurs="0"></element>
-            <element ref="tns:ActivationCondition" maxOccurs="unbounded" minOccurs="0"></element>
-            <element ref="tns:ExecutionConstraint" maxOccurs="unbounded" minOccurs="0"></element>
+            <element ref="tns:ConstitutingProperties" maxOccurs="1" minOccurs="0"></element>
+            <element ref="tns:ActivationCondition" maxOccurs="1" minOccurs="0"></element>
+            <element ref="tns:ExecutionConstraint" maxOccurs="1" minOccurs="0"></element>
         </sequence>
     </complexType>
     
@@ -219,7 +225,7 @@
         </sequence>
     </complexType>
     
-    <!-- Institutional Expressions are a abstraction capturing both institutional statements and statements of fact -->
+    <!-- Institutional Expressions are an abstraction capturing both institutional statements and statements of fact -->
     <complexType name="InstitutionalExpression">
         <choice>
             <element name="InstitutionalStatement" type="tns:InstitutionalStatement"></element>
