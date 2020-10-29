@@ -5,10 +5,10 @@ Status: Work in progress (Version: 20201029)
 
 This schema seeks alignment with the [IG 2.0 Specification](https://arxiv.org/abs/2008.08937/) and includes the following features:
 
- * constitutive and regulative statements
- * statement-level nesting, including nesting on consequence (vertical nesting) and statement combinations (horizontal nesting), as well as compound consequences
- * component-level nesting (both including institutional statements and statements of fact)
- * individual properties and property hierarchy on selected components
+ * Constitutive and regulative statements
+ * Statement-level nesting, including nesting on consequence (vertical nesting) and statement combinations (horizontal nesting), as well as compound consequences
+ * Component-level nesting (both including institutional statements and statements of fact)
+ * Individual properties and property hierarchy on selected components
  
 The schema assumes the decomposition of component-level combinations (e.g., multiple aims) into individual complete logically combined institutional statements. At the current stage, the schema furthermore focuses on the representation of structure; additional annotation attributes to capture semantic annotations are not included in the current version.
 
