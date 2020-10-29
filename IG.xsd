@@ -128,7 +128,7 @@
             <element name="NestedInstitutionalExpression" type="tns:InstitutionalExpression"></element>
         </choice>
     </complexType>
-
+    
     <element name="ExecutionConstraint" type="tns:ExecutionConstraint"></element>
     
     <!-- Execution constraints can be of primitive type or embed institutional statements or statements of fact -->
