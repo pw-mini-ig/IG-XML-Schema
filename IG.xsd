@@ -155,7 +155,7 @@
         </choice>
     </complexType>
     
-    <!-- Regulative institutional statements -->
+    <!-- Regulative institutional statement -->
     <complexType name="RegulativeInstitutionalStatement">
         <sequence>
             <element ref="tns:Attributes"></element>
@@ -192,7 +192,7 @@
         </sequence>
     </complexType>
     
-    <!-- Constitutive statement of fact  (does not include Deontic and Or else) -->
+    <!-- Constitutive statement of fact (does not include Deontic and Or else) -->
     <complexType name="ConstitutiveStatementOfFact">
         <sequence>
             <element ref="tns:ConstitutedEntity"></element>
