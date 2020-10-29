@@ -1,7 +1,7 @@
 # IG-XML-Schema
 XML Schema for the Institutional Grammar 2.0 (IG 2.0)
 
-Status: Work in progress
+Status: Work in progress (Version: 20201029)
 
 This schema seeks alignment with the [IG 2.0 Specification](https://arxiv.org/abs/2008.08937/) and includes the following features:
 
@@ -15,7 +15,5 @@ The schema assumes the decomposition of component-level combinations (e.g., mult
 Work in progress:
  * Links to external statements, collections or documents
  * support for semantic annotations (e.g., representation of context taxonomy categories)
- 
-Version: 20201029
  
 Contact: Christopher Frantz (cf@christopherfrantz.org)
