@@ -14,6 +14,8 @@ The schema assumes the decomposition of component-level combinations (e.g., mult
 
 Work in progress:
  * Links to external statements, collections or documents
- * support for semantic annotations (e.g., representation of context taxonomy categories)
+ * Support for semantic annotations (e.g., representation of context taxonomy categories, custom tags)
+ * Meta information (e.g., links to underlying source)
+ * Companion document schema to capture statement collections
  
 Contact: Christopher Frantz (cf@christopherfrantz.org)
