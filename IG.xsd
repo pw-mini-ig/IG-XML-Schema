@@ -4,64 +4,118 @@
     <annotation>
         <appinfo>Institutional Grammar 2.0 XML Schema</appinfo>
         <documentation>This file contains the XML Schema of the Institutional Grammar 2.0. 
-        It captures all forms of institutional statements, including constitutive and regulative statements, 
-        as well essential nesting capabilities, including statement-level nesting and component-level nesting, 
-        both including institutional statements as well as embedded statements of fact.
+        It captures all forms of institutional statements, including constitutive, regulative and hybrid 
+        institutional statements, as well essential nesting capabilities (statement-level nesting and
+        component-level nesting) capturing institutional statements as well as embedded statements of fact.
+        
+        Features:
+        - Institutional statements and statements of fact (both regulative and constitutive)
+        - Statement-level Nesting, both including horizontal (logical combinations) and vertical (consequences/or else) nesting
+        - Component-level Nesting
+        - Component characterization as either primitive (descriptors) or complex (e.g., additional properties and/or institutional expressions)
+        
+        Outstanding issues include: statement links, additional custom annotation labels
+        
         URL: https://github.com/InstitutionalGrammar/IG-XML-Schema
-        Contact: Christopher Frantz (cf@christopherfrantz.org)</documentation>
+        Contact: Christopher Frantz (cf@christopherfrantz.org)
+        Version: 20201029</documentation>
     </annotation>
+    
+    <!-- Specification of individual components as used in regulative and constitutive statements -->
     
     <element name="Attributes" type="tns:Attributes"></element>
     
+    <!-- Attributes can be of primitive type, reflect property hierarchies, or embed institutional statements of statements of fact -->
     <complexType name="Attributes">
         <choice>
-            <element name="Attributes" type="string"></element>
+            <sequence>
+                <!-- Simple attribute characterization -->
+                <element name="Attributes" type="string"></element>
+                <!-- One or more properties, potentially with nested properties -->
+                <element ref="tns:PropertyProperty" maxOccurs="unbounded" minOccurs="0"></element>
+            </sequence>
+            <!-- Nested institutional statement or statement of fact -->
             <element name="NestedInstitutionalStatement" type="tns:InstitutionalExpression"></element>
         </choice>
     </complexType>
-
+    
     <element name="Deontic" type="string"></element>
-
+    
     <element name="Aim" type="string"></element>
     
+    <!-- Object element consisting both of direct and indirect object (see below) -->
     <element name="Object" type="tns:Object"></element>
     
     <complexType name="Object">
         <sequence>
+            <!-- Direct object as receiver of action -->
             <element name="DirectObject" type="tns:NestedObject" maxOccurs="1" minOccurs="0"></element>
+            <!-- Indirect object as receiver of the action-object application -->
             <element name="IndirectObject" type="tns:NestedObject" maxOccurs="1" minOccurs="0"></element>
         </sequence>
     </complexType>
     
+    <!-- Objects can be of primitive type or embed institutional statements or statements of fact -->
     <complexType name="NestedObject">
         <choice>
-            <element name="Object" type="string"></element>
+            <sequence>
+                <!-- Simple object characterization -->
+                <element name="Object" type="string"></element>
+                <!-- One or more properties, potentially with nested properties -->
+                <element ref="tns:PropertyProperty" maxOccurs="unbounded" minOccurs="0"></element>
+            </sequence>
+            <!-- Nested institutional statement or statement of fact -->
             <element name="NestedInstitutionalStatement" type="tns:InstitutionalExpression"></element>
         </choice>
     </complexType>
     
     <element name="ConstitutedEntity" type="tns:ConstitutedEntity"></element>
     
+    <!-- Constituted Entities can be of primitive type or embed institutional statements or statements of fact -->
     <complexType name="ConstitutedEntity">
         <choice>
-            <element name="ConstitutedEntity" type="string"></element>
+            <sequence>
+                <!-- Simple entity characterization -->
+                <element name="ConstitutedEntity" type="string"></element>
+                <!-- One or more properties, potentially with nested properties -->
+                <element ref="tns:PropertyProperty" maxOccurs="unbounded" minOccurs="0"></element>
+            </sequence>
+            <!-- Nested institutional statement or statement of fact -->
             <element name="NestedInstitutionalStatement" type="tns:InstitutionalExpression"></element>
         </choice>
     </complexType>
     
     <element name="ConstitutingProperties" type="tns:Properties"></element>
     
+    <!-- Properties can have properties themselves (property hierarchies) -->
+    <element name="PropertyProperty" type="tns:PropertyProperty"></element>
+    
+    <!-- Properties of a property is expressed as the property characterization as well as the nested property,
+         which itself can embed a hierarchical property structure -->
+    <complexType name="PropertyProperty">
+        <sequence>
+            <element name="Property" type="tns:Properties"></element>
+            <element name="NestedProperty" type="tns:Properties"></element>
+        </sequence>
+    </complexType>
+    
+    <!-- Generic property specification, either as simple string characterization, hierarchical property structure, or institutional expression(s) -->
     <complexType name="Properties">
         <choice>
-            <element name="Properties" type="string"></element>
+            <!-- Simple property characterization -->
+            <element name="Property" type="string" maxOccurs="unbounded" minOccurs="1"></element>
+            <!-- One or more properties, potentially with nested properties -->
+            <element ref="tns:PropertyProperty" maxOccurs="unbounded" minOccurs="1"></element>
+            <!-- Nested institutional statement or statement of fact -->
             <element name="NestedInstitutionalStatement" type="tns:InstitutionalExpression"></element>
         </choice>
     </complexType>
     
     <element name="ConstitutiveFunction" type="string"></element>
-
+    
     <element name="ActivationCondition" type="tns:ActivationCondition"></element>
     
+    <!-- Activation conditions can be of primitive type or embed institutional statements or statements of fact -->
     <complexType name="ActivationCondition">
         <choice>
             <element name="ActivationCondition" type="string"></element>
@@ -71,6 +125,7 @@
 
     <element name="ExecutionConstraint" type="tns:ExecutionConstraint"></element>
     
+    <!-- Execution constraints can be of primitive type or embed institutional statements or statements of fact -->
     <complexType name="ExecutionConstraint">
         <choice>
             <element name="ExecutionConstraint" type="string"></element>
@@ -78,7 +133,10 @@
         </choice>
     </complexType>
     
+    <!-- Or else is an institutional statement itself (vertical nesting) -->
     <element name="OrElse" type="tns:InstitutionalStatement"></element>
+    
+    <!-- Logical operators -->
     
     <element name="AND" type="string"></element>
     
@@ -86,43 +144,9 @@
     
     <element name="XOR" type="string"></element>
     
-    <complexType name="InstitutionalStatementCombination">
-        <sequence>
-            <element name="LeftInstitutionalStatement" type="tns:InstitutionalStatement"></element>
-            <element name="LogicalOperator" type="tns:LogicalOperator"></element>
-            <element name="RightInstitutionalStatement" type="tns:InstitutionalStatement"></element>
-        </sequence>
-    </complexType>
+    <!-- From here onwards, institutional statements and statements of fact are defined based on the components specified above -->
     
-    <complexType name="InstitutionalStatement">
-        <sequence>
-            <element name="Inversion" type="boolean"></element>
-            <choice>
-                <element name="InstitutionalStatementCombination" type="tns:InstitutionalStatementCombination"></element>
-                <element name="RegulativeStatement" type="tns:RegulativeInstitutionalStatement"></element>
-                <element name="ConstitutiveStatement" type="tns:ConstitutiveInstitutionalStatement"></element>
-            </choice>
-        </sequence>
-    </complexType>
-    
-    <complexType name="StatementOfFact">
-        <sequence>
-            <element name="Inversion" type="boolean"></element>
-            <choice>
-                <element name="Combination" type="tns:InstitutionalStatementCombination"></element>
-                <element name="RegulativeStatementOfFact" type="tns:RegulativeStatementOfFact"></element>
-                <element name="ConstitutiveStatementOfFact" type="tns:ConstitutiveStatementOfFact"></element>
-            </choice>
-        </sequence>
-    </complexType>
-    
-    <complexType name="InstitutionalExpression">
-        <choice>
-            <element name="InstitutionalStatement" type="tns:InstitutionalStatement"></element>
-            <element name="StatementOfFact" type="tns:StatementOfFact"></element>
-        </choice>
-    </complexType>
-    
+    <!-- Combination of logical operators as a complex type used to express statement combinations -->    
     <complexType name="LogicalOperator">
         <choice>
             <element ref="tns:AND"></element>
@@ -130,7 +154,8 @@
             <element ref="tns:XOR"></element>
         </choice>
     </complexType>
-
+    
+    <!-- Regulative institutional statements -->
     <complexType name="RegulativeInstitutionalStatement">
         <sequence>
             <element ref="tns:Attributes"></element>
@@ -143,18 +168,18 @@
         </sequence>
     </complexType>
     
+    <!-- Regulative statement of fact (does not include Deontic and Or else) -->
     <complexType name="RegulativeStatementOfFact">
         <sequence>
             <element ref="tns:Attributes"></element>
             <element ref="tns:Object" maxOccurs="1" minOccurs="0"></element>
-            <element ref="tns:Deontic" maxOccurs="1" minOccurs="0"></element>
             <element ref="tns:Aim"></element>
             <element ref="tns:ActivationCondition" maxOccurs="unbounded" minOccurs="0"></element>
             <element ref="tns:ExecutionConstraint" maxOccurs="unbounded" minOccurs="0"></element>
-            <element ref="tns:OrElse" maxOccurs="1" minOccurs="0"></element>
         </sequence>
     </complexType>
     
+    <!-- Constitutive institutional statement -->
     <complexType name="ConstitutiveInstitutionalStatement">
         <sequence>
             <element ref="tns:ConstitutedEntity"></element>
@@ -167,15 +192,65 @@
         </sequence>
     </complexType>
     
+    <!-- Constitutive statement of fact  (does not include Deontic and Or else) -->
     <complexType name="ConstitutiveStatementOfFact">
         <sequence>
             <element ref="tns:ConstitutedEntity"></element>
-            <element ref="tns:Deontic" maxOccurs="1" minOccurs="0"></element>
             <element ref="tns:ConstitutiveFunction"></element>
             <element ref="tns:ConstitutingProperties" maxOccurs="unbounded" minOccurs="0"></element>
             <element ref="tns:ActivationCondition" maxOccurs="unbounded" minOccurs="0"></element>
             <element ref="tns:ExecutionConstraint" maxOccurs="unbounded" minOccurs="0"></element>
-            <element ref="tns:OrElse" maxOccurs="1" minOccurs="0"></element>
         </sequence>
     </complexType>
+    
+    <!-- Specification of statement combinations based on the specified statement types -->
+    
+    <!-- Statements of Fact are statements that express specific behavior, such as observations or beliefs, 
+         in terms of syntactic components (e.g., ABIC, PFEC) of institutional statements, generally omitting
+         Deontic and Or else components -->
+    <complexType name="StatementOfFact">
+        <sequence>
+            <element name="Inversion" type="boolean"></element>
+            <choice>
+                <element name="Combination" type="tns:InstitutionalStatementCombination"></element>
+                <element name="RegulativeStatementOfFact" type="tns:RegulativeStatementOfFact"></element>
+                <element name="ConstitutiveStatementOfFact" type="tns:ConstitutiveStatementOfFact"></element>
+            </choice>
+        </sequence>
+    </complexType>
+    
+    <!-- Institutional Expressions are a abstraction capturing both institutional statements and statements of fact -->
+    <complexType name="InstitutionalExpression">
+        <choice>
+            <element name="InstitutionalStatement" type="tns:InstitutionalStatement"></element>
+            <element name="StatementOfFact" type="tns:StatementOfFact"></element>
+        </choice>
+    </complexType>
+    
+    <!-- Institutional Statements can both be of regulative and constitutive type (or combinations of either) -->
+    <complexType name="InstitutionalStatement">
+        <sequence>
+            <element name="Inversion" type="boolean"></element>
+            <choice>
+                <sequence>
+                    <element name="InstitutionalStatementCombination" type="tns:InstitutionalStatementCombination"></element>
+                    <!-- Special case (optional): Institutional statement combinations can have compound consequences in addition to
+                         their specific consequences -->
+                    <element ref="tns:OrElse" maxOccurs="1" minOccurs="0"></element>
+                </sequence>
+                <element name="RegulativeStatement" type="tns:RegulativeInstitutionalStatement"></element>
+                <element name="ConstitutiveStatement" type="tns:ConstitutiveInstitutionalStatement"></element>
+            </choice>
+        </sequence>
+    </complexType>    
+    
+    <!-- Combinations of statements can link any form of institutional statement by logical operator -->
+    <complexType name="InstitutionalStatementCombination">
+        <sequence>
+            <element name="LeftInstitutionalStatement" type="tns:InstitutionalStatement"></element>
+            <element name="LogicalOperator" type="tns:LogicalOperator"></element>
+            <element name="RightInstitutionalStatement" type="tns:InstitutionalStatement"></element>
+        </sequence>
+    </complexType>
+    
 </schema>
