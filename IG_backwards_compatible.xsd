@@ -184,7 +184,7 @@
             <element ref="tns:Attributes"></element>
             <element ref="tns:Object" maxOccurs="1" minOccurs="0"></element>
             <!-- Deontic is string (backward compability) -->
-            <element name="DeonticPosition" type="tns:BoundingBox" maxOccus="1" minOccurs="1"></element>
+            <element name="DeonticPosition" type="tns:BoundingBox" maxOccus="1" minOccurs="0"></element>
             <element ref="tns:Deontic" maxOccurs="1" minOccurs="0"></element>
             <!-- Aim is string -->
             <element name="AimPosition" type="tns:BoundingBox"></element>
