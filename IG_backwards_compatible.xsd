@@ -130,7 +130,7 @@
     <!-- Activation conditions can be of primitive type or embed institutional statements or statements of fact -->
     <complexType name="ActivationCondition">
         <sequence>
-            <element name="Position" type="tns:BoundingBox"></element>
+            <element name="Position" type="tns:BoundingBox" maxOccurs="unbounded" minOccurs="0"></element>
             <choice>
                 <element name="ActivationCondition" type="string" maxOccurs="unbounded" minOccurs="0"></element>
                 <element name="NestedInstitutionalExpression" type="tns:InstitutionalExpression"></element>
@@ -143,7 +143,7 @@
     <!-- Execution constraints can be of primitive type or embed institutional statements or statements of fact -->
     <complexType name="ExecutionConstraint">
         <sequence>
-            <element name="Position" type="tns:BoundingBox"></element>
+            <element name="Position" type="tns:BoundingBox" maxOccurs="unbounded" minOccurs="0"></element>
             <choice>
                 <element name="ExecutionConstraint" type="string" maxOccurs="unbounded" minOccurs="0"></element>
                 <element name="NestedInstitutionalExpression" type="tns:InstitutionalExpression"></element>
@@ -184,7 +184,7 @@
             <element ref="tns:Attributes"></element>
             <element ref="tns:Object" maxOccurs="1" minOccurs="0"></element>
             <!-- Deontic is string (backward compability) -->
-            <element name="DeonticPosition" type="tns:BoundingBox" maxOccus="1" minOccurs="0"></element>
+            <element name="DeonticPosition" type="tns:BoundingBox" maxOccurs="1" minOccurs="0"></element>
             <element ref="tns:Deontic" maxOccurs="1" minOccurs="0"></element>
             <!-- Aim is string -->
             <element name="AimPosition" type="tns:BoundingBox"></element>
@@ -294,6 +294,7 @@
     </complexType>
 
     <!-- Sentence object contains original sentence -->
+    <element name="Sentence" type="tns:Sentence"></element>
     <complexType name="Sentence">
         <sequence>
             <element name="Content" type="string"></element>

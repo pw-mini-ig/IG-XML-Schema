@@ -41,7 +41,7 @@
 
     <complexType name="AttributeObject">
         <sequence>
-            <element name="value" type="string">
+            <element name="value" type="string"></element>
             <element name="Position" type="tns:BoundingBox"></element>
         </sequence>
     </complexType>
@@ -50,7 +50,7 @@
 
     <complexType name="DeonticObject">
         <sequence>
-            <element name="value" type="string">
+            <element name="value" type="string"></element>
             <element name="Position" type="tns:BoundingBox"></element>
         </sequence>
     </complexType>
@@ -59,7 +59,7 @@
 
     <complexType name="AimObject">
         <sequence>
-            <element name="value" type="string">
+            <element name="value" type="string"></element>
             <element name="Position" type="tns:BoundingBox"></element>
         </sequence>
     </complexType>
@@ -92,7 +92,7 @@
 
     <complexType name="ObjectObject">
         <sequence>
-            <element name="value" type="string">
+            <element name="value" type="string"></element>
             <element name="Position" type="tns:BoundingBox"></element>
         </sequence>
     </complexType>
@@ -115,7 +115,7 @@
 
     <complexType name="ConstitutedEntityObject">
         <sequence>
-            <element name="value" type="string">
+            <element name="value" type="string"></element>
             <element name="Position" type="tns:BoundingBox"></element>
         </sequence>
     </complexType>
@@ -159,7 +159,7 @@
 
     <complexType name="ConstitutiveFunctionObject">
         <sequence>
-            <element name="value" type="string">
+            <element name="value" type="string"></element>
             <element name="Position" type="tns:BoundingBox"></element>
         </sequence>
     </complexType>
@@ -169,7 +169,7 @@
     <!-- Activation conditions can be of primitive type or embed institutional statements or statements of fact -->
     <complexType name="ActivationCondition">
         <sequence>
-            <element name="Position" type="tns:BoundingBox"></element>
+            <element name="Position" type="tns:BoundingBox" maxOccurs="unbounded" minOccurs="0"></element>
             <choice>
                 <element name="ActivationCondition" type="string" maxOccurs="unbounded" minOccurs="0"></element>
                 <element name="NestedInstitutionalExpression" type="tns:InstitutionalExpression"></element>
@@ -182,7 +182,7 @@
     <!-- Execution constraints can be of primitive type or embed institutional statements or statements of fact -->
     <complexType name="ExecutionConstraint">
         <sequence>
-            <element name="Position" type="tns:BoundingBox"></element>
+            <element name="Position" type="tns:BoundingBox" maxOccurs="unbounded" minOccurs="0"></element>
             <choice>
                 <element name="ExecutionConstraint" type="string" maxOccurs="unbounded" minOccurs="0"></element>
                 <element name="NestedInstitutionalExpression" type="tns:InstitutionalExpression"></element>
@@ -327,6 +327,7 @@
     </complexType>
 
     <!-- Sentence object contains original sentence -->
+    <element name="Sentence" type="tns:Sentence"></element>
     <complexType name="Sentence">
         <sequence>
             <element name="Content" type="string"></element>
