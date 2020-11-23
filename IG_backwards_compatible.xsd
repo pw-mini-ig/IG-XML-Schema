@@ -309,7 +309,7 @@
     <complexType name="BoundingBox">
         <sequence>
             <element name="Begin" type="integer"></element>
-            <element name="End" type="integer"></element>
+            <element name="Length" type="integer"></element>
         </sequence>
     </complexType>
     

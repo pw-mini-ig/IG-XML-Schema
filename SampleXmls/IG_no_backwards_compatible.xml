@@ -4,20 +4,20 @@
 	<ig:InstitutionalStatement>
 		<ig:Position>
 			<ig:Begin>0</ig:Begin>
-			<ig:End>156</ig:End>
+			<ig:Length>156</ig:Length>
 		</ig:Position>
 		<ig:Inversion>false</ig:Inversion>
 		<ig:RegulativeStatement>
 			<ig:Position>
 				<ig:Begin>0</ig:Begin>
-				<ig:End>156</ig:End>
+				<ig:Length>156</ig:Length>
 			</ig:Position>
 			<ig:Attributes>
 				<ig:Attributes>
 				    <ig:value>The State</ig:value>
 				    <ig:Position>
 					    <ig:Begin>0</ig:Begin>
-					    <ig:End>10</ig:End>
+					    <ig:Length>10</ig:Length>
 				    </ig:Position>
 				</ig:Attributes>
 			</ig:Attributes>
@@ -26,25 +26,25 @@
 					<ig:NestedInstitutionalExpression>
 						<ig:Position>
 							<ig:Begin>19</ig:Begin>
-							<ig:End>156</ig:End>
+							<ig:Length>137</ig:Length>
 						</ig:Position>
 						<ig:InstitutionalStatement>
 							<ig:Position>
 								<ig:Begin>19</ig:Begin>
-								<ig:End>156</ig:End>
+								<ig:Length>137</ig:Length>
 							</ig:Position>
 							<ig:Inversion>false</ig:Inversion>
 							<ig:RegulativeStatement>
 								<ig:Position>
 									<ig:Begin>19</ig:Begin>
-									<ig:End>156</ig:End>
+									<ig:Length>137</ig:Length>
 								</ig:Position>
 								<ig:Attributes>
 									<ig:Attributes>
 									    <ig:value>employers</ig:value>
 									        <ig:Position>
 										        <ig:Begin>19</ig:Begin>
-										        <ig:End>28</ig:End>
+										        <ig:Length>9</ig:Length>
 									        </ig:Position>
 									</ig:Attributes>
 								</ig:Attributes>
@@ -54,14 +54,14 @@
 										    <ig:value>notification</ig:value>
 										    <ig:Position>
 											    <ig:Begin>38</ig:Begin>
-											    <ig:End>51</ig:End>
+											    <ig:Length>13</ig:Length>
 										    </ig:Position>
 										</ig:Object>
 										<ig:PropertyProperty>
 											<ig:Property>
 												<ig:Position>
 													<ig:Begin>51</ig:Begin>
-													<ig:End>99</ig:End>
+													<ig:Length>48</ig:Length>
 												</ig:Position>
 												<ig:Property>of the availability of unemployment compensation</ig:Property>
 											</ig:Property>
@@ -72,7 +72,7 @@
 										    <ig:value>to employees</ig:value>
 										    <ig:Position>
 											    <ig:Begin>99</ig:Begin>
-											    <ig:End>111</ig:End>
+											    <ig:Length>12</ig:Length>
 										    </ig:Position>
 										</ig:Object>
 									</ig:IndirectObject>
@@ -81,13 +81,13 @@
 								    <ig:value>to provide</ig:value>
 								    <ig:Position>
 									    <ig:Begin>28</ig:Begin>
-									    <ig:End>38</ig:End>
+									    <ig:Length>10</ig:Length>
 								    </ig:Position>
 								</ig:Aim>
 								<ig:ActivationCondition>
 									<ig:Position>
 										<ig:Begin>111</ig:Begin>
-										<ig:End>156</ig:End>
+										<ig:Length>45</ig:Length>
 									</ig:Position>
 									<ig:ActivationCondition>at the time of separation from employment.</ig:ActivationCondition>
 								</ig:ActivationCondition>
@@ -100,7 +100,7 @@
 			    <ig:value>requires</ig:value>
 			    <ig:Position>
 				    <ig:Begin>10</ig:Begin>
-				    <ig:End>19</ig:End>
+				    <ig:Length>9</ig:Length>
 			    </ig:Position>
 			</ig:Aim>
 		</ig:RegulativeStatement>

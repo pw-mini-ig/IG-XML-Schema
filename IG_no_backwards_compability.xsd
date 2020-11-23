@@ -3,22 +3,26 @@
 
     <annotation>
         <appinfo>Institutional Grammar 2.0 XML Schema</appinfo>
-        <documentation>This file contains the XML Schema of the Institutional Grammar 2.0. 
-        It captures all forms of institutional statements, including constitutive, regulative and hybrid 
-        institutional statements, as well essential nesting capabilities (statement-level nesting and
-        component-level nesting) capturing institutional statements as well as embedded statements of fact.
-        
-        Features:
-        - Institutional statements and statements of fact (both regulative and constitutive)
-        - Statement-level Nesting, both including horizontal (logical combinations) and vertical (consequences/or else) nesting
-        - Component-level Nesting
-        - Component characterization as either primitive (descriptors) or complex (e.g., additional properties and/or institutional expressions)
-        
-        Outstanding issues include: statement links, additional custom annotation labels
-        
-        URL: https://github.com/InstitutionalGrammar/IG-XML-Schema
-        Contact: Christopher Frantz (cf@christopherfrantz.org)
-        Version: 20201029</documentation>
+        <documentation>
+          TODO: update docs
+
+          This file contains the XML Schema of the Institutional Grammar 2.0.
+          It captures all forms of institutional statements, including constitutive, regulative and hybrid
+          institutional statements, as well essential nesting capabilities (statement-level nesting and
+          component-level nesting) capturing institutional statements as well as embedded statements of fact.
+
+          Features:
+          - Institutional statements and statements of fact (both regulative and constitutive)
+          - Statement-level Nesting, both including horizontal (logical combinations) and vertical (consequences/or else) nesting
+          - Component-level Nesting
+          - Component characterization as either primitive (descriptors) or complex (e.g., additional properties and/or institutional expressions)
+
+          Outstanding issues include: statement links, additional custom annotation labels
+
+          URL: https://github.com/InstitutionalGrammar/IG-XML-Schema
+          Contact: Christopher Frantz (cf@christopherfrantz.org)
+          Version: 20201029
+        </documentation>
     </annotation>
     
     <!-- Specification of individual components as used in regulative and constitutive statements -->
@@ -342,7 +346,7 @@
     <complexType name="BoundingBox">
         <sequence>
             <element name="Begin" type="integer"></element>
-            <element name="End" type="integer"></element>
+            <element name="Length" type="integer"></element>
         </sequence>
     </complexType>
     
